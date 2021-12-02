@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import "./App.css";
@@ -9,7 +14,6 @@ import Header from "./components/Header";
 import CreateUser from "./pages/CreateUser";
 import UserProfile from "./pages/UserProfile";
 import FirebaseConfig from "./components/FirebaseConfig";
-import Navigate from "./utils/Navigate";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -50,7 +54,7 @@ function App() {
       });
   }
 
-  if (loading) return null;
+  if (loading || !appInitialized) return null;
   return (
     <>
       <Header logout={logout} loggedIn={loggedIn} />
