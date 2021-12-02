@@ -1,7 +1,14 @@
 import React from "react";
 
-function UserProfile() {
-  return <div>User Profile</div>;
+function UserProfile({ userInformation }) {
+  return (
+    <div className="PageWrapper">
+      <h1>User Profile</h1>
+      <p>EMAIL: {userInformation.email}</p>
+      <p>NAME: {userInformation.displayName}</p>
+      <p>UID: {userInformation.uid}</p>
+    </div>
+  );
 }
 
 export default UserProfile;
